@@ -16,19 +16,20 @@ Private Members
 @:buf is the search buffer
 
 Init
-@: W
-#: Initalizes buf to size W and makes a 
+#: Initalizes buf to size W an stores
+#: W lists in each of the positions 
+
+get_match
+@:match_index 
+@:L integer match_len 
+#: try to find a match the for the string 
+#: on input[match_index,match_index + len]
 
 
+Section: Helpers
 
-
-
-Insertion
-@:
-#: 
-
-Del
-For deletion we will need to maintain a pointer to the character in the text
-that is oldest. then when we want to delete a character we look up that character in
-the search-buffer and remove it then increment oldest pointer by one
-
+matchindex_to_str
+@:match_index
+@:L integer
+#:convert match_index to 
+#: to a str of length L 
