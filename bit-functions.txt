@@ -1,0 +1,45 @@
+bit-functions.txt
+
+bstr_to_chr
+@:bstr is a binary str of 8 bits long
+#:convert bstr into its character representation 
+
+chr_to_bstr
+@:chr is a character literal
+#:convert chr to its 8 bit binary representation
+
+encode_offsetlen
+@:offset_len an integer reprsesenting the encode_offset
+@:N  number of bits to use in encoding
+#:transform offset_len into its bit representation  
+
+encode_matchlen
+@:match_len an integer representing match length
+@:L number of bits to use in encoding 
+#:transform match_len to bit representation of (match_len - 1)
+
+encode_strlen
+@:str_len is an integer representing length of unmatched characters
+@:S is the number of bits to use in encoding, (longest match is 2^(S) - 1)
+
+encode_eof
+@:L is nuumber of bits to use in the encoding of (0)
+@:S is number of bits to use in encoding (0)
+#:produces a special pair (0,0) which denotes the end of file
+#:the binary str produced will be of length L + S
+ 
+join_bits OVERLOADED
+@:bit_offset_len a N bit binary str denoting offset lenth
+@:bit_match_len an L bit binary str denoting match length
+#:join two bit strings together to emulate (len,offset) pair to
+#: get a N + L bit binary string
+
+join_bits OVERLOADED
+@:bit_code_len is an L bit binary represntation of 0
+@:bit_str_len: is an S bit string denonting the number of characters 
+@: that were not matched in the look ahead buffer. (usally 1)
+@:str is a string literal of up to S characters terminated by null character
+#:join bit_code_len,bit_str_len, and str to emulate (code,strlen,chars) pair
+#: get a L + S + len(str) binary/char str 
+
+

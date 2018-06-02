@@ -1,0 +1,46 @@
+Annotation Conventions
+Each function should be clearly commented in the .h files (when they exist)
+parameters and result. It will not be neccessary to copy the annotations
+to the .cpp files. (with an expcetion of main which doesnt have a .h file).
+
+@:<name> is explanation of parameter with <name>
+#: is an explanation of a result. C
+
+Section: <name> 
+^^ is used to group functions based on their effect. Use in both .h files
+and .cpp files for clarity and fast navigation using vim.
+
+Functions
+always lowercase _ separated 
+
+Parameter names
+one word lower case
+
+Member Variable Names
+member variables should always use lower case separated by underscores for example
+"hash_map". Favor longer descriptive names
+
+Member Function Names
+should use camel casing to help distinguish them from member variables
+
+Class names
+Camel case but begins with upper case letter. Better to have one word if possible
+
+Global variable
+should be # defined when possible otherwise use const all caps
+
+Variable Names 
+short and sweet use underscores if absolutely neccessary but prefer shorter names
+
+Module names
+allways lower case with underscores. Also, use .cc and .hpp 
+
+-------------------
+Defintion of parametrs that will be used throughout all the files
+
+N specifies the number of bits used to encode an offset into the window.
+     N also determines the window size, W, which is 2N. The default value of N is 11. 
+L specifies the number of bits used to encode the maximum match length. 
+    L also determines the lookahead buffer size, F, which is 2L. The default value of L is 4. 
+S specifies the number of bits used to encode the maximum length of literal strings.
+     S also determines the length of the longest encoded literal string, which is 2S-1. The default value of S is 3.

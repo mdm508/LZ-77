@@ -1,0 +1,34 @@
+The search-buffer is an array of linkedlists. Each entry is the head of a linked list. Note that the list 
+doesnt actually store any symbols. For those purposes we use a list. It will be enough for us to just know that
+a particular entry in the array of lists corresponds to a particular character. Also really
+the lists only purpose is to deal with speeding up searches and managing the window representation.
+this increases the storage to q^2 + q^2 but who cares, it will make things cleaner
+
+
+requires map,list 
+
+Constants/Globals 
+@:W is the window length (W=2^{N})
+@: map is an instance of the map class
+#: its is used to translate characters to indices
+
+Private Members
+@:buf is the search buffer
+
+Init
+@: W
+#: Initalizes buf to size W and makes a 
+
+
+
+
+
+Insertion
+@:
+#: 
+
+Del
+For deletion we will need to maintain a pointer to the character in the text
+that is oldest. then when we want to delete a character we look up that character in
+the search-buffer and remove it then increment oldest pointer by one
+
