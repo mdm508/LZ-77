@@ -1,0 +1,8 @@
+Questions 
+
+Section: I/O questions
+?What is standard output how to i direct output there?
+?How do i time both encoding an deconding
+?How do i direct output to std::err
+
+
