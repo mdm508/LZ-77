@@ -1,7 +1,6 @@
 CC = g++
 CFLAGS = -c -std=c++11 -Wall
-OBJFILES =  token_triple.o \
-		   list.o search_buffer.o tests.o
+OBJFILES = token_triple.o list.o search_buffer.o tests.o
 TARGET = run
 
 all:$(TARGET)
