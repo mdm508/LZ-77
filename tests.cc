@@ -16,7 +16,6 @@ void log(First && first, Rest && ...rest)
     std::cout << endl;
     log(std::forward<Rest>(rest)...);
 } 
-
 void t_bset_to_chr(){
     bitset<8> bs (0x78);
     char c = bset_to_chr(bs);
@@ -34,6 +33,8 @@ void t_chr_to_bset(){
         throw(E);
     }
 }
+
+
 void t_bset_to_int(){
     bitset<16> b(0xA112);
     int d = bset_to_int(b);
@@ -43,6 +44,7 @@ void t_bset_to_int(){
     }
 }
 
+/*
 void t_encode_eof(){
     const int L=3, S=3;
     const int theSum = L + S;
@@ -65,6 +67,8 @@ void t_make_token_double(){
 void t_make_token_triple(){
 }
 
+*/
+
 void t_join2(){
     bitset<3> bA (000);
     bitset<4> bB (1011);
@@ -76,6 +80,7 @@ void t_join2(){
     }
 }
 
+/*
 void t_join3(){
     bitset<3> bA (111);
     bitset<4> bB (0101);
@@ -129,10 +134,16 @@ void test_bit_tools(){
     t_split2();
     t_split3();
 }
+*/
+
+
+
 int main(int argc, char** argv)
 {
    //Section: Bitset Tests
 
-
+    //std::bitset<12> b (111100000000);
+    //const int s = b.size();
+    //bitset<4> b1 = get_slice<4,12>(b,8,11);
     return 0;
 }

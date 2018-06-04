@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -c -std=c++11 -Wall
-OBJFILES = bit_tools.o token_triple.o \
+OBJFILES =  token_triple.o \
 		   list.o search_buffer.o tests.o
 TARGET = run
 
@@ -9,9 +9,6 @@ all:$(TARGET)
 $(TARGET): $(OBJFILES)
 	$(CC) $(OBJFILES) -o $(TARGET)
 
-
-bit_tools.o: bit_tools.cc
-	$(CC) $(CFLAGS) bit_tools.cc
 
 token_triple.o: token_triple.cc
 	$(CC) $(CFLAGS) token_triple.cc 
