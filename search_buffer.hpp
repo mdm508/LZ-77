@@ -11,6 +11,15 @@ and symetrically for YY
 we will use the integer representation of 0xXXYY to index the bufferthus each
 16 bit seq gets a unique spot in the search bufffer. 
 
+a search buffer can do the following
+-  represent the portion of the input thats visible
+-  determine if a string is matched or not
+-  load new stuff into the input stream
+- kick old stuff out
+- 
+
+
+
 */
 
 #ifndef SEARCHBUFFER_HPP
@@ -26,28 +35,30 @@ class searchBuffer{
 
         //@:the maximum number of list nodes that
         //@:    buf can accomodate
-        unsigned int buf_capacity;
+        size_t buf_capacity;
 
         //@:tracks the total number of list nodes
         //@:    currently inside of buf
-        unsigned long listnode_count;
+        size_t listnode_count;
 
     public:
-        //#: Initalizes buf to size W, where
-        //#: W = 2^{N} / 8 since this nummber represents
-        //#: number of bytes that the window spans
-        //#: Create W lists in each of the positions 
-        searchBuffer(unsigned int N);
+        //#: Initalizes buf_capactiy to size W
+        //to 2^{N-2} which is max number of nodes 
+        //it can store
+        //Initialize 256*256 lists
+        searchBuffer(size_t N);
 
-        //@:bstr denotes a 16 bit binary set where
-        //@:the lower and upper half reprsent two 
-        list* getList(std::bitset<16> bstr);
+        //make a new node at list_index with id input_buf_index
+        insert(size_t list_index, size_t input_buf_index); 
         
         //@:match_index 
         //@:L integer match_len 
         //#: try to find a match of two or greater the for the string 
         //#: on input[match_index,match_index + len]
-        unsigned long get_match(unsigned long match_index, unsigned int L);
+        std::pair<size_t,size_t> get_match(size_t LAB_index,\
+                                   size_t max_match,\
+                                   const std::string& input_buf,\
+                                   size_t size_input_buf);
 
         //#: Returs true if the buf_capacity = listnode_count 
         bool atCapacity();
@@ -57,11 +68,5 @@ class searchBuffer{
 
 //SECTION: Helper Functions
 
-//?:I cant think why we would need this? Delete ??
-//matchindex_to_str
-//@:match_index
-//@:L integer
-//#:convert match_index to 
-//#: to a str of length L 
 
 #endif //SEARCHBUFFER_HPP
