@@ -2,9 +2,11 @@
 //this file is for playing around with idea and modules
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "bits.hpp"
 #include "list.hpp"
 #include "search_buffer.hpp"
+#include "cody.hpp"
 
 using namespace std;
 void log(){}
@@ -31,30 +33,12 @@ void print_list( const list& L){
 
 int main(int argc, char** argv)
 {
-  //log(chr_to_binary('c'));   
-  //log(strip_lead_zeros(s));
-  //log(str_to_binary("cat house"));
-  ///              0123456789
-  std::string buf("AABAABBBBCABBBBBBD");
-  size_t LAB_index = 10;
-  size_t max_match = 4;
-  size_t N = 5;
-  searchBuffer s(N);
-
-  /*
-  list ll; 
-  //all matches ar for AB
-  ll.insert(1); //match
-  ll.insert(4);
-  print_list(ll);
-  std::pair<size_t,size_t> p;
-  p = ll.get_longest_match(LAB_index,\
-                            max_match,\
-                            buf,\
-                            buf.length());
-  log(p.first,p.second);
-  log(buf[p.first]);
-  */
+  size_t li = 0;
+  size_t low = 0;
+  Cody c = Cody(li,low,"example.txt");
+  c.write("100001");
+  c.write("0000001");
+  c.closeFile();
 
   return 0;
 }

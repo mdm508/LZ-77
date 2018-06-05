@@ -25,3 +25,36 @@
 //make a new triple that is currenlty unmatt 
 //CASE 3: There are no characters left to read
 //  in this case output the EOF
+//
+//
+//
+     
+
+ int main()
+{
+    // TODO:
+    // Parse the command line arguments
+    std::string infile = "infile.txt"; 
+    std::string outfile = "outfile.txt";
+    const size_t L;
+    //@:offset encoding length
+    const size_t N;
+    //@:encode strlen
+    const size_t S;
+    
+    // Prepare Files
+    std::string input_buf = create_input_str(infile);
+    ofstream file;
+    file.open(outfile);
+
+    // Init Bookeeping and Constant 
+    const size_t input_buf_len = input_buf_.length();
+    const size_t eof_index = input_buf_len - 1;
+    const size_t input_buf_len;
+    //current position in input stream
+    size_t lab_index = 0;
+    //lowest position in the window
+    size_t low_index = 0;
+
+    // Initialize Search Buffer (Window representation)
+
