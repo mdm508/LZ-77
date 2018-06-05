@@ -18,12 +18,14 @@ void log(First && first, Rest && ...rest)
 } 
 
 
-void print_list(list L){
+void print_list( const list& L){
     const listNode* temp = L.getHead();
+    std::cout << "printing" <<  std::endl;
     while (temp != nullptr){
         cout << temp->index << endl;
         temp = temp->next;
     }
+    std::cout << "done printing" <<  std::endl << std::endl;
 }
 
 int main(int argc, char** argv)
@@ -34,14 +36,19 @@ int main(int argc, char** argv)
   ///              0123456789
   std::string buf("AABAABBBBCABBBBBBD");
   size_t LAB_index = 10;
-  size_t max_match = 5;
+  size_t max_match = 4;
 
-  list ll = list(); 
+  list ll; 
   //all matches ar for AB
   ll.insert(1); //match
   ll.insert(4);
-
   print_list(ll);
-
+  std::pair<size_t,size_t> p;
+  p = ll.get_longest_match(LAB_index,\
+                            max_match,\
+                            buf,\
+                            buf.length());
+  log(p.first,p.second);
+  log(buf[p.first]);
   return 0;
 }

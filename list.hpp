@@ -28,6 +28,11 @@ class list{
         //#: inits list with head and tail pointing to null
         list( );
 
+        list(list& that);
+        //#: copy constructor deletes old list
+        //# and copies in new one
+        list& operator=(const list& that); 
+        
         //#: deletes each node in the list
         ~list();
 
@@ -44,7 +49,7 @@ class list{
         void remove();
 
         //returns the list node pointed to by head
-        const listNode* getHead();
+        const listNode* getHead() const;
         
         //@:LAB_index is the index where match begins in the LAB
         //@:L is the match length 
@@ -57,8 +62,9 @@ class list{
         //and the second is the length of the match
         //return a pair (0,0) if no match found
         std::pair<size_t,size_t> get_longest_match(size_t LAB_index,\
-                                            size_t max_match,\
-                                            const std::string& input_buf);
+                        size_t max_match,\
+                        const std::string& input_buf,size_t buf_size);
+                            
 
                                                  
 };
@@ -76,7 +82,9 @@ class list{
 //#:return the length of the match (include the two characters matched initially)
 //#:thus lowest return value is 2
 std::pair<size_t,size_t>  matchindex(size_t index,\
-                   size_t LAB_index, size_t max_match,\
-                   const std::string& input_buf);
+                   size_t buf_index, \
+                   size_t max_match,\
+                   const std::string& input_buf,\
+                   size_t buf_size);
 
 #endif

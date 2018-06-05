@@ -8,17 +8,37 @@ list::list()
     len = 0;
 }
 
+//TODO: implement this make sure it isnt invoked for now
+
+list::list(list& that)
+{
+    std::cout << "invoked CC" << std::endl;
+    
+}
+
+list& list::operator=(const list& that)
+{
+    std::cout << "invoked AC" << std::endl;
+//    if (this != & that){ 
+        this->~list();
+        this->head = that.head;
+        this->tail = that.tail;
+        this->len = that.len;
+        return *this;
+ //   }
+}
+
 list::~list()
 {
-    listNode* temp = head;
-    std::cout << "____" << std::endl;
-    std::cout << temp->index << std::endl;
+    listNode* temp = head ;
+//    std::cout << "____" << std::endl;
     while (temp != nullptr){
-        listNode* node = temp;
-        temp = temp->next;
-    //    std::cout << temp->next->index << std::endl;
-        delete node;
+        listNode* node = temp->next;
+        std::cout << temp->index << std::endl;
+        delete temp;
+        temp = node;
     }
+    head = nullptr;
 }
 
 void list::insert(size_t i){
@@ -44,15 +64,15 @@ void list::remove()
     }
 }
 
-const listNode* list::getHead()
+const listNode* list::getHead() const
 {
     return head;
 }
 
 std::pair<size_t,size_t> list::get_longest_match(size_t LAB_index,\
-                                           size_t max_match,\
-                                           const std::string& \
-                                           input_buf)
+                                   size_t max_match,\
+                                   const std::string& input_buf, \
+                                   size_t buf_size)
 {
     std::pair<size_t,size_t> match_pair(0,0), canidate_match;
     //Case1 no match
@@ -61,7 +81,11 @@ std::pair<size_t,size_t> list::get_longest_match(size_t LAB_index,\
     listNode* temp = head;
     while (temp != nullptr){
         canidate_match = matchindex(temp->index,\
-                            LAB_index,max_match,input_buf);
+                                   LAB_index,\
+                                   max_match,\
+                                   input_buf,\
+                                   buf_size);
+
         if (canidate_match.second > match_pair.second)
             match_pair = canidate_match;
         temp = temp->next;
@@ -72,19 +96,22 @@ std::pair<size_t,size_t> list::get_longest_match(size_t LAB_index,\
 //SECTION: Helper Functions
 
 std::pair<size_t,size_t> matchindex(size_t index,\
-          size_t LAB_index,size_t max_match, const std::string& input_buf)
+          size_t buf_index,\
+          size_t max_match,\
+          const std::string& input_buf,\
+          size_t buf_size)
 {
-    std::pair<size_t,size_t> match_pair;
+    //the fact that this function calls mean there was at least
+    //a match length of two so we adjust indices accordingly
     size_t matchlength = 2;
-    while (matchlength < max_match){
-        if (input_buf[index] == input_buf[LAB_index]){
+    size_t i = index + 2;
+    size_t bi = buf_index + 2;
+    while (matchlength < max_match && bi < buf_size){
+        if (input_buf[i++] == input_buf[bi++])
             ++matchlength;
-            ++index;
-            ++LAB_index;
-        }
         else
             break;
     }
-    match_pair = std::make_pair(index,matchlength);
+    std::pair<size_t,size_t> match_pair(index,matchlength);
     return match_pair;
 }
