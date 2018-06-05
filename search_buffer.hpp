@@ -25,13 +25,13 @@ a search buffer can do the following
 #ifndef SEARCHBUFFER_HPP
 #define SEARCHBUFFER_HPP
 #include "list.hpp"
-#include <bitset>
 
+const size_t BUF_SIZE = 256 * 256;
 
 class searchBuffer{
     private:
         //@:buf is the search buffer
-        list buf;
+        list buf[BUF_SIZE];
 
         //@:the maximum number of list nodes that
         //@:    buf can accomodate
@@ -49,19 +49,26 @@ class searchBuffer{
         searchBuffer(size_t N);
 
         //make a new node at list_index with id input_buf_index
-        insert(size_t list_index, size_t input_buf_index); 
+        void insert(size_t list_index, size_t input_buf_index); 
         
+        //removes the oldest value in the list at list_index
+        void remove(size_t list_index);
+        //
         //@:match_index 
         //@:L integer match_len 
         //#: try to find a match of two or greater the for the string 
         //#: on input[match_index,match_index + len]
-        std::pair<size_t,size_t> get_match(size_t LAB_index,\
+        std::pair<size_t,size_t> get_match(         \
+                                   size_t list_index,\
+                                   size_t LAB_index,\
                                    size_t max_match,\
                                    const std::string& input_buf,\
                                    size_t size_input_buf);
 
         //#: Returs true if the buf_capacity = listnode_count 
         bool atCapacity();
+
+        size_t getCount();
 
 
 };

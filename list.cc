@@ -18,7 +18,7 @@ list::list(list& that)
 
 list& list::operator=(const list& that)
 {
-    std::cout << "invoked AC" << std::endl;
+    //std::cout << "invoked AC" << std::endl;
 //    if (this != & that){ 
         this->~list();
         this->head = that.head;
@@ -31,7 +31,7 @@ list& list::operator=(const list& that)
 list::~list()
 {
     listNode* temp = head ;
-//    std::cout << "____" << std::endl;
+    //std::cout << "____" << std::endl;
     while (temp != nullptr){
         listNode* node = temp->next;
         std::cout << temp->index << std::endl;

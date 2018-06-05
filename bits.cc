@@ -21,6 +21,7 @@ std::string strip_lead_zeros(std::string s)
     return s;
 }
 
+
 std::string chr_to_binary(char c,bool remove_lead_zeros=false)
 {
     std::bitset<8> bset(c);
@@ -31,6 +32,7 @@ std::string chr_to_binary(char c,bool remove_lead_zeros=false)
     return s;
 }
 
+
 std::string str_to_binary(std::string s)
 {
     std::string t("");
@@ -38,6 +40,14 @@ std::string str_to_binary(std::string s)
         t += chr_to_binary(s[i]);
     }
     return t;
+}
+
+size_t chrs_to_number(char c1, char c2)
+{
+    std::string s({c1,c2});
+    s = str_to_binary(s);
+    std::bitset<16> bset(s);
+    return bset.to_ulong();
 }
 
 std::string make_zero_string(unsigned int x){

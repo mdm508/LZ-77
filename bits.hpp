@@ -14,11 +14,13 @@ std::string strip_lead_zeros(std::string s);
 //as a string. 
 std::string chr_to_binary(char c,bool remove_lead_zeros);
 
-
 //# takes a string and converts it to its
 //binary representation as a string
 std::string str_to_binary(std::string s);
 
+//# take 2 char string and convert it to the integral
+//representation
+size_t chrs_to_number(char c1, char c2);
 
 //@: x is desired length of string
 //#: make a zero string of size x

@@ -4,6 +4,7 @@
 #include <string>
 #include "bits.hpp"
 #include "list.hpp"
+#include "search_buffer.hpp"
 
 using namespace std;
 void log(){}
@@ -37,7 +38,10 @@ int main(int argc, char** argv)
   std::string buf("AABAABBBBCABBBBBBD");
   size_t LAB_index = 10;
   size_t max_match = 4;
+  size_t N = 5;
+  searchBuffer s(N);
 
+  /*
   list ll; 
   //all matches ar for AB
   ll.insert(1); //match
@@ -50,5 +54,7 @@ int main(int argc, char** argv)
                             buf.length());
   log(p.first,p.second);
   log(buf[p.first]);
+  */
+
   return 0;
 }
