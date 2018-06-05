@@ -6,6 +6,8 @@ tokenTriple::tokenTriple(size_t S,std::string s)
     : str(s)
 {
     max_strlen = pow(2,S) - 1;
+    if (s.length() > max_strlen)
+        std::cout << "error init tokenTriple" << std::endl;
 }
 
 void tokenTriple::updateTriple(std::string s)
@@ -19,7 +21,7 @@ void tokenTriple::updateTriple(std::string s)
     str += s;
 }
 
-size_t tokenTriple::calcBytesNeeded(){
+    size_t tokenTriple::calcBytesNeeded() {
     return 8 * str.length();
 }
  

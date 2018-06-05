@@ -23,7 +23,7 @@ class tokenTriple {
         void updateTriple(std::string s);
 
         //#return the number of bytes needed to store str
-        size_t calcBytesNeeded();
+        size_t calcBytesNeeded() ;
             
         ////////////////////// 
         //SECTION: Get Methods
