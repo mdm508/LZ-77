@@ -28,7 +28,8 @@
 //
 //
 //
-     
+#include "search_buffer.hpp" 
+#include "misc.hpp"
 
  int main()
 {
@@ -48,7 +49,7 @@
     file.open(outfile);
 
     // Init Bookeeping and Constant 
-    const size_t input_buf_len = input_buf_.length();
+    const size_t input_buf_len = input_buf.length();
     const size_t eof_index = input_buf_len - 1;
     const size_t input_buf_len;
     //current position in input stream

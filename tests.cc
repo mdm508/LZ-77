@@ -6,7 +6,6 @@
 #include "bits.hpp"
 #include "list.hpp"
 #include "search_buffer.hpp"
-#include "cody.hpp"
 
 using namespace std;
 void log(){}
@@ -35,10 +34,6 @@ int main(int argc, char** argv)
 {
   size_t li = 0;
   size_t low = 0;
-  Cody c = Cody(li,low,"example.txt");
-  c.write("100001");
-  c.write("0000001");
-  c.closeFile();
 
   return 0;
 }
