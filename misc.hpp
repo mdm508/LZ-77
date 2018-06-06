@@ -14,4 +14,9 @@ std::string create_input_str(std::string infile);
 //#:get the position of the max index relative to LAB
 size_t calc_relative_offset(size_t buf_index,size_t LAB_index);
 
+//adds the string c1,c2 to the search buffer
+//and updates the list index
+
+unsigned char str_to_byte(std::string s);
+void write(std::string s,std::ostream& out);
 #endif

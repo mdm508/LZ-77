@@ -33,6 +33,7 @@ std::string make_zero_string(unsigned int x);
 std::string pad_string(std::string s,unsigned int total);
     
 
+//FUNCTIONS USEFUL TO ENCODING
 
 //@:L is number of bits to encode matchlen
 //@:S is number of str literals that can be
@@ -61,7 +62,9 @@ std::string make_token_double(size_t L, \
 //where code is L bit binary rep of 0,
 //strlen is #of chars being encoded
 //chars is an encoding of strlen chars
-std::string make_token_triple(tokenTriple t,\
+std::string make_token_triple(std::string chars,\
                               size_t L,\
-                              size_t S);
+                              size_t S,
+                              size_t num_chars);
+
 #endif

@@ -34,7 +34,6 @@ list::~list()
     //std::cout << "____" << std::endl;
     while (temp != nullptr){
         listNode* node = temp->next;
-        std::cout << temp->index << std::endl;
         delete temp;
         temp = node;
     }

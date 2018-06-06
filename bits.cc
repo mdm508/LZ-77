@@ -1,7 +1,7 @@
 //bits.cpp
-#include <bitset>
 #include <iostream>
-#include "token_triple.hpp"
+#include <bitset>
+#include "bits.hpp"
 
 
 
@@ -91,15 +91,19 @@ std::string make_token_double(size_t L, \
     return match_str + offset_str;
 }
 
-std::string make_token_triple(tokenTriple t,\
+std::string make_token_triple(std::string chars,
                               size_t L,\
-                              size_t S)
+                              size_t S,
+                              size_t num_chars)
 {
-    std::string L_str, S_str, chars_str;
+    std::string L_str, strlen_str, chars_str;
     L_str = make_zero_string(L);
-    S_str = make_zero_string(S);
-    chars_str = str_to_binary(t.getString());
-    return L_str + S_str + chars_str;
+    //create <strlen,chars>
+    strlen_str = std::to_string(num_chars); //convert integer to str
+    strlen_str = str_to_binary(strlen_str);
+    strlen_str = pad_string(strlen_str, S);
+    chars_str = str_to_binary(chars);
+    return L_str + strlen_str + chars_str;
 
 }
 

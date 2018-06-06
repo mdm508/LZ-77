@@ -10,21 +10,34 @@ tokenTriple::tokenTriple(size_t S,std::string s)
         std::cout << "error init tokenTriple" << std::endl;
 }
 
-void tokenTriple::updateTriple(std::string s)
+std::string tokenTriple::updateTriple(std::string s)
 {
     //TODO: change this to standard error
-    if (! hasCapacity(s)){
-        std::cout << "tried to add string without enough capacity" \
-            << std::endl;
-        return;
-    }
     str += s;
-}
-
-    size_t tokenTriple::calcBytesNeeded() {
-    return 8 * str.length();
+    size_t length = str.length();
+    if (length >= max_strlen){
+        std::string tstr;
+        tstr = str.substr(0,max_strlen);
+        //update str to be remaning portion not returned
+        if (max_strlen <  length){
+            str = str.substr(max_strlen,length-1);
+        }
+        else{
+            //thre was nothing left
+            reset();
+        }
+        return tstr;
+    }
+    //if we reached here it means we were able to
+    //accomodate the string
+    return "";
 }
  
+void tokenTriple::reset()
+{
+    str = "";
+}
+
 //SECTION: Get Methods
 std::string tokenTriple::getString()
 {
@@ -43,4 +56,11 @@ bool tokenTriple::hasCapacity(std::string s){
         return false;
 }
 
+bool tokenTriple::isEmpty()
+{
+    if (str == "")
+        return true;
+    else
+        return false;
+}
 
