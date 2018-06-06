@@ -30,26 +30,27 @@ void write(std::string s,std::ostream& out)
     std::string tstring;
     unsigned char c;
     if (len < 8){
-        tstring = pad_string(s, 8);
+        tstring = pad_string(s, 8,false);
         c = str_to_byte(tstring);
         //std::cout << tstring << std::endl;
         out << c;
         return;
     }
     size_t i = 0 ;
-    for (; i < len; i+=8){
+    for (; i+7 < len; i+=8){
         tstring = s.substr(i,8);
         //std::cout << tstring << std::endl;
         c = str_to_byte(tstring);
         out << c;
     }
-    if (i != len){
-        i = i-8;
-        tstring = pad_string(s.substr(i,8),8);
+    if (i < len){
+        //pads right 
         //std::cout << tstring << std::endl;
+        tstring = pad_string(s.substr(i,8),8,false);
         c = str_to_byte(tstring);
         out << c;
     }
+
 }
 
 

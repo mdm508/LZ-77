@@ -30,7 +30,8 @@ std::string make_zero_string(unsigned int x);
 //@:total is the desired total length of str
 //#:pads s with as many zeros as neccessary so
 //that s's total lenth equal total
-std::string pad_string(std::string s,unsigned int total);
+//left specifies whether to bad left or right true for yes fales for no
+std::string pad_string(std::string s,unsigned int total,bool left);
     
 
 //FUNCTIONS USEFUL TO ENCODING

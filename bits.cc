@@ -58,13 +58,18 @@ std::string make_zero_string(unsigned int x){
     return s;
 }
 
-std::string pad_string(std::string s,unsigned int total)
+std::string pad_string(std::string s,unsigned int total, bool left)
 {
     unsigned int length = s.length();
     if (length < total){
         unsigned int diff = total - length;
         std::string zerostr = make_zero_string(diff);
-        zerostr = zerostr + s;
+        if (left == true){
+            zerostr = zerostr + s;
+        }
+        else{
+            zerostr = s + zerostr;
+        }
         return zerostr;
     }
    return s; 
@@ -84,10 +89,10 @@ std::string make_token_double(size_t L, \
 {
     std::string match_str = chr_to_binary(matchlen - 1,true);
     if (match_str.length() < L)
-        match_str = pad_string(match_str,L);
+        match_str = pad_string(match_str,L,true);
     std::string offset_str = chr_to_binary(offsetindex,true);
     if (offset_str.length() < N)
-        offset_str = pad_string(offset_str,N);
+        offset_str = pad_string(offset_str,N,true);
     return match_str + offset_str;
 }
 
@@ -101,7 +106,7 @@ std::string make_token_triple(std::string chars,
     //create <strlen,chars>
     strlen_str = std::to_string(num_chars); //convert integer to str
     strlen_str = str_to_binary(strlen_str);
-    strlen_str = pad_string(strlen_str, S);
+    strlen_str = pad_string(strlen_str, S,true);
     chars_str = str_to_binary(chars);
     return L_str + strlen_str + chars_str;
 
