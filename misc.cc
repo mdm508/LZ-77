@@ -53,7 +53,7 @@ void write(std::string s,std::ostream& out)
 
 }
 
-
+//These functions help with decoding
 
 
 

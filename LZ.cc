@@ -44,8 +44,8 @@ using namespace std;
 {
     // TODO:
     // Parse the command line arguments
-    std::string infile = "book1"; 
-    std::string outfile = "outfile";
+    std::string infile = "book"; 
+    std::string outfile = "book.out";
     const size_t L = 4;
     //@:offset encoding length
     const size_t N = 11;

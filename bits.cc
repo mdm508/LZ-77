@@ -45,10 +45,12 @@ std::string str_to_binary(std::string s)
 size_t chrs_to_number(char c1, char c2)
 {
     std::string s({c1,c2});
+
     s = str_to_binary(s);
     std::bitset<16> bset(s);
     return bset.to_ulong();
 }
+
 
 std::string make_zero_string(unsigned int x){
     std::string s;

@@ -59,6 +59,7 @@ std::string make_token_double(size_t L, \
 
 //L,S are same as before
 //#: t is a token triple that will be encodes
+//
 //to give a triple of the form (code,strlen,chars)
 //where code is L bit binary rep of 0,
 //strlen is #of chars being encoded
